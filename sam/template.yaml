@@ -113,22 +113,6 @@ Resources:
             Auth:
               Authorizer: MyLambdaTokenAuthorizer
 
-  GetTokenFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/handlers/getToken
-      Handler: app.handler
-      Runtime: nodejs14.x
-      Events:
-        GetTokenFunctionApi:
-          Type: Api
-          Properties:
-            RestApiId: !Ref TasksApi
-            Path: /token
-            Method: POST
-            # Auth:
-            #   Authorizer: NONE
-
   TasksTable:
     Type: AWS::DynamoDB::Table
     Properties:
